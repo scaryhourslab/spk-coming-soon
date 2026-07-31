@@ -24,17 +24,17 @@
   <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
     <div style="position:absolute;inset:0;background:#1a1a1a;display:flex;align-items:center;justify-content:center;z-index:10">
       <div style="position:relative;width:70px;height:105px">
-        <img src="uploads/spk-scenery-sub-mark-1-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.0.opacity }}"/>
-        <img src="uploads/spk-scenery-sub-mark-2-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.1.opacity }}"/>
-        <img src="uploads/spk-scenery-sub-mark-3-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.2.opacity }}"/>
-        <img src="uploads/spk-scenery-sub-mark-4-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.3.opacity }}"/>
-        <img src="uploads/spk-scenery-sub-mark-5-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.4.opacity }}"/>
-        <img src="uploads/spk-scenery-sub-mark-6-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.5.opacity }}"/>
-        <img src="uploads/spk-scenery-sub-mark-7-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.6.opacity }}"/>
+        <img src="assets/spk-scenery-sub-mark-1-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.0.opacity }}"/>
+        <img src="assets/spk-scenery-sub-mark-2-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.1.opacity }}"/>
+        <img src="assets/spk-scenery-sub-mark-3-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.2.opacity }}"/>
+        <img src="assets/spk-scenery-sub-mark-4-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.3.opacity }}"/>
+        <img src="assets/spk-scenery-sub-mark-5-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.4.opacity }}"/>
+        <img src="assets/spk-scenery-sub-mark-6-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.5.opacity }}"/>
+        <img src="assets/spk-scenery-sub-mark-7-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.6.opacity }}"/>
       </div>
     </div>
   </sc-if>
-  <img src="uploads/landing-storefront-logo.svg" alt="SPK Scenery storefront" style="width:70px;height:auto;display:block;margin-bottom:40px"/>
+  <img src="assets/landing-storefront-logo.svg" alt="SPK Scenery storefront" style="width:70px;height:auto;display:block;margin-bottom:40px"/>
   <div style="position:absolute;bottom:80px;display:flex;flex-direction:column;align-items:center;gap:18px">
     <div style="font-family:var(--font-heading);font-size:12px;letter-spacing:0.35em;color:#6b6b68;text-transform:uppercase">Website Coming Soon</div>
     <a class="ig-link" href="https://instagram.com/spkscenery" target="_blank" rel="noopener" style="font-family:var(--font-heading);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;text-decoration:none;color:#6b6b68;border-bottom:1px solid transparent;transition:color 150ms;margin-top:40px">@spkscenery</a>
@@ -44,7 +44,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  logos = [1,2,3,4,5,6,7].map(n => `uploads/spk-scenery-sub-mark-${n}-powdered-rgb.svg`);
+  logos = [1,2,3,4,5,6,7].map(n => `assets/spk-scenery-sub-mark-${n}-powdered-rgb.svg`);
   state = { frame: 0, loading: true };
   componentDidMount() {
     this.interval = setInterval(() => {
