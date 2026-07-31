@@ -1,72 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPK Scenery — Coming Soon</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #1A1A1A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .wrap { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .wrap img { width: 140px; height: auto; display: block; }
+    .label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #F8F3E8;
+      opacity: 0.55;
+    }
+  </style>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="stylesheet" href="_ds/spk-scenery-design-system-9e08ff90-853a-4d7d-8f5e-902b1c3844aa/tokens/colors.css">
-  <link rel="stylesheet" href="_ds/spk-scenery-design-system-9e08ff90-853a-4d7d-8f5e-902b1c3844aa/tokens/typography.css">
-  <link rel="stylesheet" href="_ds/spk-scenery-design-system-9e08ff90-853a-4d7d-8f5e-902b1c3844aa/tokens/spacing.css">
-  <link rel="stylesheet" href="_ds/spk-scenery-design-system-9e08ff90-853a-4d7d-8f5e-902b1c3844aa/tokens/effects.css">
-  <link rel="stylesheet" href="_ds/spk-scenery-design-system-9e08ff90-853a-4d7d-8f5e-902b1c3844aa/styles.css">
-  <script src="_ds/spk-scenery-design-system-9e08ff90-853a-4d7d-8f5e-902b1c3844aa/_ds_bundle.js"></script>
-  <style>
-    body { margin: 0; background: #1a1a1a; }
-    a.ig-link { color: #e8e0d0; }
-    a.ig-link:hover { color: #ffffff; }
-  </style>
-</helmet>
-<div style="width:100%;height:100vh;background:#1a1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden">
-  <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
-    <div style="position:absolute;inset:0;background:#1a1a1a;display:flex;align-items:center;justify-content:center;z-index:10">
-      <div style="position:relative;width:70px;height:105px">
-        <img src="assets/spk-scenery-sub-mark-1-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.0.opacity }}"/>
-        <img src="assets/spk-scenery-sub-mark-2-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.1.opacity }}"/>
-        <img src="assets/spk-scenery-sub-mark-3-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.2.opacity }}"/>
-        <img src="assets/spk-scenery-sub-mark-4-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.3.opacity }}"/>
-        <img src="assets/spk-scenery-sub-mark-5-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.4.opacity }}"/>
-        <img src="assets/spk-scenery-sub-mark-6-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.5.opacity }}"/>
-        <img src="assets/spk-scenery-sub-mark-7-powdered-rgb.svg" alt="Loading" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:{{ logoFrames.6.opacity }}"/>
-      </div>
-    </div>
-  </sc-if>
-  <img src="assets/landing-storefront-logo.svg" alt="SPK Scenery storefront" style="width:70px;height:auto;display:block;margin-bottom:40px"/>
-  <div style="position:absolute;bottom:80px;display:flex;flex-direction:column;align-items:center;gap:18px">
-    <div style="font-family:var(--font-heading);font-size:12px;letter-spacing:0.35em;color:#6b6b68;text-transform:uppercase">Website Coming Soon</div>
-    <a class="ig-link" href="https://instagram.com/spkscenery" target="_blank" rel="noopener" style="font-family:var(--font-heading);font-size:11px;letter-spacing:0.3em;text-transform:uppercase;text-decoration:none;color:#6b6b68;border-bottom:1px solid transparent;transition:color 150ms;margin-top:40px">@spkscenery</a>
+  <div class="wrap">
+    <img src="assets/landing-storefront-logo.svg" alt="SPK Scenery" />
+    <p class="label">Coming Soon</p>
   </div>
-</div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  logos = [1,2,3,4,5,6,7].map(n => `assets/spk-scenery-sub-mark-${n}-powdered-rgb.svg`);
-  state = { frame: 0, loading: true };
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState(s => ({ frame: s.frame + 1 }));
-    }, 300);
-    this.timeout = setTimeout(() => {
-      clearInterval(this.interval);
-      this.setState({ loading: false });
-    }, 2100);
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-    clearTimeout(this.timeout);
-  }
-  renderVals() {
-    const active = this.state.frame % this.logos.length;
-    return {
-      loading: this.state.loading,
-      logoFrames: this.logos.map((src, i) => ({ src, opacity: i === active ? 1 : 0 })),
-    };
-  }
-}
-</script>
 </body>
 </html>
